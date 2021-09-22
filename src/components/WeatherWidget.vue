@@ -8,7 +8,9 @@
       /></template>
       <template #date><WeatherWidgetDate /></template>
       <template #temperature
-        ><WeatherWidgetTemperature :temperature="temperature"
+        ><WeatherWidgetTemperature
+          :feelsLike="feelsLikeTemp"
+          :temperature="temperature"
       /></template>
       <template #place><WeatherWidgePlace :placeName="placeName"/></template>
     </WeatherWidgetGrid>
@@ -36,6 +38,9 @@ export default {
     WeatherWidgePlace,
   },
   props: {
+    feelsLikeTemp: {
+      type: String,
+    },
     temperature: {
       type: String,
     },
@@ -61,10 +66,10 @@ export default {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-  max-width: 100%;
+
   border-radius: 1rem;
   font-family: 'Montserrat';
-  max-width: 100%;
+
   color: #2d0086;
 }
 </style>

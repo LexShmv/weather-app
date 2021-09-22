@@ -35,6 +35,15 @@ export default {
     'IconAndDescriprion Date Temperature'
     'Place Place Place';
 }
+@media (max-width: 490px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      'Temperature IconAndDescriprion'
+      'Place Date';
+  }
+}
 
 .Place {
   grid-area: Place;

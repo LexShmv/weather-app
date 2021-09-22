@@ -18,9 +18,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .search {
-  padding: 1rem 0;
+  padding-top: 1rem;
+  margin-bottom: 0.5rem;
   width: 100%;
   display: flex;
   justify-content: center;

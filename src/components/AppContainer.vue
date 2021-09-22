@@ -20,6 +20,9 @@ export default {
     const { temperature } = toRefs(props);
 
     const mainBackground = computed(() => {
+      if (!temperature.value) {
+        return 'linear-gradient(180deg, #6284FF 0%, #6284FF 50%, #FF0000 100%)';
+      }
       if (temperature.value - 273 <= 0) {
         return 'linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)';
       } else if (temperature.value - 273 > 0 && temperature.value - 273 <= 15) {
@@ -46,14 +49,14 @@ export default {
 }
 
 .container {
-  max-width: 100%;
+  max-width: 95%;
   margin: 0 auto;
   position: relative;
 }
 
 @media (min-width: 768px) {
   .container {
-    max-width: 50%;
+    max-width: 60%;
   }
 }
 
