@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'WeatherWidgetGrid',
+  name: "WeatherWidgetGrid",
 };
 </script>
 
@@ -27,21 +27,21 @@ export default {
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr auto;
-  gap: 0px 0px;
-  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    'IconAndDescriprion Date Temperature'
-    'Place Place Place';
+    "Temperature IconAndDescriprion"
+    "Place Date";
+  grid-auto-flow: row;
 }
-@media (max-width: 490px) {
+@media (min-width: 490px) {
   .grid-container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+
     grid-template-areas:
-      'Temperature IconAndDescriprion'
-      'Place Date';
+      "IconAndDescriprion Date Temperature"
+      "Place Place Place";
   }
 }
 
