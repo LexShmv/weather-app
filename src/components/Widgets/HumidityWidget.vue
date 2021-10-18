@@ -53,17 +53,17 @@
 </template>
 
 <script>
-import WidgetContainer from "./WidgetContainer.vue";
+import WidgetContainer from './WidgetContainer.vue';
 
 export default {
-  name: "HumidityWidget",
+  name: 'HumidityWidget',
   components: {
     WidgetContainer,
   },
 
   props: {
     humidity: {
-      type: Object,
+      type: Number,
     },
   },
 };
@@ -71,8 +71,8 @@ export default {
 
 <style>
 .bounce__animation {
-    transform-origin: bottom;
-    animation: bounce 2s ease infinite;
+  transform-origin: bottom;
+  animation: bounce 2s ease infinite;
 }
 
 @keyframes bounce {

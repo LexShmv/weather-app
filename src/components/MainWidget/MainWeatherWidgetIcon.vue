@@ -63,9 +63,15 @@ export default {
   margin-bottom: -1rem;
   position: relative;
   display: inline-block;
-  width: 12em;
-  height: 10em;
+  width: 12rem;
+  height: 10rem;
   font-size: 1rem; /* control icon size here */
+}
+@media (max-width: 476px) {
+  .icon {
+    width: 8rem;
+    height: 6rem;
+  }
 }
 
 .cloud {

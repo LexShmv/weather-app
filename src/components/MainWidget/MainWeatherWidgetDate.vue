@@ -63,11 +63,16 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  row-gap: 0.7rem;
 }
 
 .weather__current-weekday {
-  padding: 0.7rem 0;
   font-weight: bold;
   font-size: 1.2rem;
+}
+@media (max-width: 476px) {
+  .weather__date {
+    row-gap: 0.4rem;
+  }
 }
 </style>

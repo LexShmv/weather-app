@@ -21,4 +21,9 @@ export default {
   text-align: center;
   text-transform: capitalize;
 }
+@media (max-width: 476px) {
+  .weather__desc {
+    margin-top: 1rem;
+  }
+}
 </style>

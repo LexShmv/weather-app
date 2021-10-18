@@ -1,44 +1,77 @@
 <template>
-  <form @submit.prevent="$emit('submiting-search')" class="search">
+  <form @submit.prevent class="search__container">
     <input
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
+      @focus="showAutoComplete"
+      @blur="closeAutoComplete"
       type="text"
-      class="search__input"
+      class="search__input container"
       :class="errorName ? 'pulse-red-text' : ''"
+    />
+    <SearchCityPredict
+      @search-city="upSearch"
+      v-if="isShowAutoComplete"
+      :query="modelValue"
     />
   </form>
 </template>
 
 <script>
+import SearchCityPredict from './SearchCityAutocomplete.vue';
+import { ref } from 'vue';
+
 export default {
   name: 'SearchCity',
+
+  components: {
+    SearchCityPredict,
+  },
+
   props: ['modelValue', 'errorName'],
-  emits: ['update:modelValue', 'submiting-search'],
+  emits: ['update:modelValue', 'search-city'],
+
+  setup(props, { emit }) {
+    const upSearch = (city) => {
+      emit('search-city', city);
+    };
+
+    const isShowAutoComplete = ref(false);
+
+    const showAutoComplete = () => {
+      isShowAutoComplete.value = true;
+    };
+
+    const closeAutoComplete = () => {
+      setTimeout(() => {
+        isShowAutoComplete.value = false;
+      }, 100);
+    };
+
+    return {
+      upSearch,
+      isShowAutoComplete,
+      showAutoComplete,
+      closeAutoComplete,
+    };
+  },
 };
 </script>
 
 <style>
-.search {
-  padding-top: 1rem;
-  margin-bottom: 0.5rem;
+.search__container {
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .search__input {
   width: 100%;
-  color: #2d0086;
   font-size: 2.5rem;
   text-align: center;
   text-transform: uppercase;
-  border-radius: 1rem;
   border: none;
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .pulse-red-text {

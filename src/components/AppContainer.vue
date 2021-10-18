@@ -1,9 +1,9 @@
 <template>
-  <div class="app" :style="{ backgroundImage: mainBackground }">
-    <div class="container">
+  <main class="app" :style="{ backgroundPositionX: mainBackgroundPosition }">
+    <div class="app__container">
       <slot></slot>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -19,26 +19,26 @@ export default {
   setup(props) {
     const { temperature } = toRefs(props);
 
-    const mainBackground = computed(() => {
+    const mainBackgroundPosition = computed(() => {
       if (!temperature.value) {
-        return 'linear-gradient(180deg, #6284FF 0%, #6284FF 50%, #FF0000 100%)';
+        return '0%';
       }
       if (temperature.value - 273 <= 0) {
-        return 'linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)';
+        return '0%';
       } else if (temperature.value - 273 > 0 && temperature.value - 273 <= 15) {
-        return ' linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)';
+        return '50%';
       } else if (
         temperature.value - 273 > 15 &&
         temperature.value - 273 <= 25
       ) {
-        return 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)';
+        return '100%';
       } else if (temperature.value - 273 > 25) {
-        return 'linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)';
+        return '200%';
       }
-      return '';
+      return '0%';
     });
 
-    return { mainBackground };
+    return { mainBackgroundPosition };
   },
 };
 </script>
@@ -47,23 +47,30 @@ export default {
 .app {
   width: 100%;
   min-height: 100vh;
+
+  background-color: #d9afd9;
+  background-image: linear-gradient(270deg, #d9afd9 0%, #97d9e1 100%);
+
+  background-size: 400% 100%;
+  transition: background-position 3s linear;
 }
 
-.container {
+.app__container {
   max-width: 95%;
   margin: 0 auto;
   position: relative;
+  padding: 0.5rem 0;
 }
 
 @media (min-width: 768px) {
-  .container {
+  .app__container {
     max-width: 60%;
   }
 }
 
-@media (min-width: 1280px) {
-  .container {
-    max-width: 40%;
+@media (min-width: 1600px) {
+  .app__container {
+    max-width: 50%;
   }
 }
 </style>

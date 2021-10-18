@@ -1,5 +1,5 @@
 <template>
-  <div class="metcric__container">
+  <div class="metcric__container container">
     <div class="metric__item">
       <input
         class="metric__swither"
@@ -44,15 +44,10 @@ export default {
 
 <style>
 .metcric__container {
-  max-width: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  min-width: 100%;
   margin-bottom: 0.5rem;
-  overflow: hidden;
-  border-radius: 1rem;
-  color: #2d0086;
   display: flex;
+  overflow: hidden;
 }
 
 .metric__item {
